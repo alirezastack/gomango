@@ -1,0 +1,35 @@
+// Protocol Buffers Language version
+syntax = "proto3";
+
+package zoodroom;
+
+// python3 -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. olive/proto/zoodroom.proto
+// ----------------- Cranberry service (OAuth 2.0) -----------------
+
+service TomatoService {
+    rpc AddFeedback(AddFeedbackRequest) returns (AddFeedbackResponse) {}
+    rpc GetFeedback(GetFeedbackRequest) returns (GetFeedbackResponse) {}
+}
+
+message AddFeedbackRequest {
+    string full_name = 1;
+    string email = 2;
+    string phone = 3;
+    string content = 4;
+}
+
+message AddFeedbackResponse {
+    bool is_created = 1;
+}
+
+message GetFeedbackRequest {
+    string feeback_id = 1;
+}
+
+message GetFeedbackResponse {
+    string _id = 1;
+    string full_name = 2;
+    string email = 3;
+    string phone = 4;
+    string content = 5;
+}
